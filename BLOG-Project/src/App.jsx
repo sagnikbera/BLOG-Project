@@ -1,15 +1,34 @@
+import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux";
+import authService from "./appwrite/auth";
+
+
 
 
 function App() {
+  
+  const [loading , setloading] = useState(true);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    authService.getCurrentUser()
+    .then((userData) => {
+      if (userData) {
+        dispatch()
+      
+      }
+    })
+    .finally()
+  } , [])
 
   return (
     <>
-     <h1 className="text-3xl bg-black font-bold underline text-white p-8">
-      Hello world!
-    </h1>
+     
     </>
   )
 }
 
-export default App
+export default App;
+
+
+
